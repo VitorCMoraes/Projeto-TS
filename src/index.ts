@@ -1,16 +1,20 @@
-import {Produto} from './model/produto'
-import { Estoque } from './model/estoque'
+import { Biblioteca } from "./model/biblioteca";
+import { Livro } from "./model/livro";
 
-const produto1 = new Produto(6,'chocolate',5.00,2)
-const estoque = new Estoque()
-estoque.adicionarProduto(new Produto(1,'chocolate1',5.10))
-estoque.adicionarProduto(new Produto(2,'chocolate2',5.20,3))
-estoque.adicionarProduto(new Produto(3,'chocolate3',5.30))
-estoque.adicionarProduto(new Produto(4,'chocolate4',5.40,5))
-estoque.adicionarProduto(new Produto(5,'chocolate5',5.50,6))
-estoque.adicionarProduto(produto1)
-estoque.adicionarProduto(produto1)
-console.log(estoque.listaProduto)
-estoque.atualizarQuantidade(6,10)
-console.log(estoque.listaProduto)
-Produto.salvar()
+let biblioteca: Biblioteca = new Biblioteca([])
+let livro1: Livro = new Livro(1, "Harry Potter 1", "J. K. Rowling", true)
+let livro2: Livro = new Livro(2, "Harry Potter 2", "J. K. Rowling", true)
+let livro3: Livro = new Livro(3, "Harry Potter 3", "J. K. Rowling", true)
+
+biblioteca.adicionarLivro(livro1)
+biblioteca.adicionarLivro(livro2)
+biblioteca.adicionarLivro(livro3)
+biblioteca.adicionarLivro(new Livro(4, "Harry Potter 4", "J. K. Rowling", true))
+
+console.log(biblioteca.consultarDisponibilidade(6) ? "Livro disponivel" : "Livro indisponivel")
+console.log(biblioteca.consultarDisponibilidade(4) ? "Livro disponivel" : "Livro indisponivel")
+
+biblioteca.registrarEmprestimo(2)
+console.log(biblioteca.consultarDisponibilidade(2) ? "Livro disponivel" : "Livro indisponivel")
+
+biblioteca.registrarEmprestimo(2)
