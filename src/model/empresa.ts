@@ -1,7 +1,7 @@
 import { Funcionario } from "./funcionario";
 
 export class Empresa {
-    funcionarios: Funcionario[]
+    private funcionarios: Funcionario[]
 
     constructor(funcionarios: Funcionario[]){
         this.funcionarios = funcionarios
