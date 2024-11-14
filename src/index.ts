@@ -1,20 +1,20 @@
-import { Biblioteca } from "./model/biblioteca";
-import { Livro } from "./model/livro";
+import { Tarefa } from "./model/tarefa";
+import { GestorTarefas } from "./model/gestorTarefas";
 
-let biblioteca: Biblioteca = new Biblioteca([])
-let livro1: Livro = new Livro(1, "Harry Potter 1", "J. K. Rowling", true)
-let livro2: Livro = new Livro(2, "Harry Potter 2", "J. K. Rowling", true)
-let livro3: Livro = new Livro(3, "Harry Potter 3", "J. K. Rowling", true)
+let tarefa1: Tarefa = new Tarefa(1, "Corrigir funcoes", "Pendente", "Feature nova")
+let tarefa2: Tarefa = new Tarefa(2, "Criar novas Classes", "Concluida", "Correcao de bug no portal")
+let tarefa3: Tarefa = new Tarefa(3, "Realizar testes das novas funcionalidades", "Pendente", "Feature nova")
+let gestorTarefas: GestorTarefas = new GestorTarefas([])
 
-biblioteca.adicionarLivro(livro1)
-biblioteca.adicionarLivro(livro2)
-biblioteca.adicionarLivro(livro3)
-biblioteca.adicionarLivro(new Livro(4, "Harry Potter 4", "J. K. Rowling", true))
+gestorTarefas.adicionarTarefa(tarefa1)
+gestorTarefas.adicionarTarefa(tarefa2)
+gestorTarefas.adicionarTarefa(tarefa3)
 
-console.log(biblioteca.consultarDisponibilidade(6) ? "Livro disponivel" : "Livro indisponivel")
-console.log(biblioteca.consultarDisponibilidade(4) ? "Livro disponivel" : "Livro indisponivel")
+gestorTarefas.atualizarStatus(4, "Concluida")
+gestorTarefas.atualizarStatus(1, "Concluida")
 
-biblioteca.registrarEmprestimo(2)
-console.log(biblioteca.consultarDisponibilidade(2) ? "Livro disponivel" : "Livro indisponivel")
+const tarefasProjeto1: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Criacao da nova pagina de atividades")
+const tarefasProjeto2: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Feature nova")
 
-biblioteca.registrarEmprestimo(2)
+console.log(tarefasProjeto1 ? tarefasProjeto1 : "Nenhuma tarefa encontrada")
+console.log(tarefasProjeto2 ? tarefasProjeto2 : "Nenhuma tarefa encontrada")
