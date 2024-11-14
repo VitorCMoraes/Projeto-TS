@@ -12,16 +12,18 @@ export class Hotel {
     }
 
     cancelarReserva(numeroQuarto: number): void{
-        let i: number
-        for(i = 0; i < this.reservas.length && this.reservas[i].numeroQuarto != numeroQuarto; i++){}
-
-        if(i < this.reservas.length){
-            this.reservas[i].nomeHospede = ""
-            this.reservas[i].dataEntrada = 
+        const index = this.reservas.findIndex(item => item.numeroQuarto == numeroQuarto)
+        if(index != -1){
+            this.reservas.splice(index, 1)
+            console.log("Reserva cancelada")
+            return
         }
+        console.log("Reserva nao encontrada")
+        return
     }
 
     consultarStatusQuarto(numeroQuarto: number): string{
-
+        const index = this.reservas.findIndex(item => item.numeroQuarto == numeroQuarto)
+        return index != -1 ? "Quarto indisponivel" : "Quarto disponivel"
     }
 }
