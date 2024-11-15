@@ -13,5 +13,5 @@ hotel.registrarReserva(reserva3)
 hotel.cancelarReserva(10)
 hotel.cancelarReserva(101)
 
-hotel.consultarStatusQuarto(100)
-hotel.consultarStatusQuarto(101)
+console.log(hotel.consultarStatusQuarto(100))
+console.log(hotel.consultarStatusQuarto(101))
