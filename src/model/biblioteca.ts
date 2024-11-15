@@ -12,7 +12,7 @@ export class Biblioteca {
     }
 
     registrarEmprestimo(codigo: number): void {
-        const index = this.acervo.findIndex(item => item.codigo = codigo)
+        const index = this.acervo.findIndex(item => item.codigo == codigo)
         if(index != -1){
             if(this.acervo[index].disponivel){
                 this.acervo[index].disponivel = false
@@ -20,6 +20,7 @@ export class Biblioteca {
                 return
             }
             console.log("Livro indisponivel")
+            return
         }
         console.log("Livro nao encontrado")
     }
