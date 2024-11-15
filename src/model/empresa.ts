@@ -12,11 +12,9 @@ export class Empresa {
     }
 
     atualizarSalario(matricula: number, salario: number): void {
-        let i: number
-        for(i = 0; i < this.funcionarios.length && this.funcionarios[i].matricula != matricula; i++){}
-
-        if(i < this.funcionarios.length){
-            this.funcionarios[i].salario = salario
+        const index = this.funcionarios.findIndex(item => item.matricula == matricula)
+        if(index != -1){
+            this.funcionarios[index].salario = salario
             console.log("Salario atualizado")
             return
         }
@@ -25,12 +23,7 @@ export class Empresa {
     }
 
     consultarFuncionario(matricula: number): Funcionario | undefined {
-        let i: number
-        for(i = 0; i < this.funcionarios.length && this.funcionarios[i].matricula != matricula; i++){}
-
-        if(i < this.funcionarios.length){
-            return this.funcionarios[i]
-        }
-        return
+        const index = this.funcionarios.findIndex(item => item.matricula == matricula)
+        return index != -1 ? this.funcionarios[index] : undefined
     }
 }
