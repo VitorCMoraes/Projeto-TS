@@ -14,7 +14,7 @@ gestorTarefas.atualizarStatus(4, "Concluida")
 gestorTarefas.atualizarStatus(1, "Concluida")
 
 const tarefasProjeto1: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Criacao da nova pagina de atividades")
-const tarefasProjeto2: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Feature nova")
+console.log(tarefasProjeto1.length != 0 ? tarefasProjeto1 : "Nenhuma tarefa encontrada")
 
-console.log(tarefasProjeto1 ? tarefasProjeto1 : "Nenhuma tarefa encontrada")
-console.log(tarefasProjeto2 ? tarefasProjeto2 : "Nenhuma tarefa encontrada")
+const tarefasProjeto2: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Feature nova")
+console.log(tarefasProjeto2.length != 0 ? tarefasProjeto2 : "Nenhuma tarefa encontrada")
