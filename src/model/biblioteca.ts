@@ -12,30 +12,24 @@ export class Biblioteca {
     }
 
     registrarEmprestimo(codigo: number): void {
-        let i: number
-        for(i = 0; i < this.acervo.length && this.acervo[i].codigo != codigo; i++){}
-
-        if(i < this.acervo.length){
-            if(this.acervo[i].disponivel == true){
-                this.acervo[i].disponivel = false
+        const index = this.acervo.findIndex(item => item.codigo = codigo)
+        if(index != -1){
+            if(this.acervo[index].disponivel){
+                this.acervo[index].disponivel = false
                 console.log("Emprestimo registrado")
                 return
             }
             console.log("Livro indisponivel")
-            return
         }
-        console.log("Nao encontrado")
+        console.log("Livro nao encontrado")
     }
 
     consultarDisponibilidade(codigo: number): boolean {
-        let i: number
-        for(i = 0; i < this.acervo.length && this.acervo[i].codigo != codigo; i++){}
-
-        if(i < this.acervo.length){
-            return this.acervo[i].disponivel
+        const index = this.acervo.findIndex(item => item.codigo == codigo)
+        if(index != -1){
+            return this.acervo[index].disponivel
         }
         console.log("Nao encontrado")
-
         return false
     }
 }
